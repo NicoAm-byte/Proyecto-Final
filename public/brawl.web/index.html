@@ -5,33 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brawl Stars Fan Page</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+</body>
+
 </head>
 <body>
     <!-- Encabezado con logo y perfil -->
     <header>
-        <img src="img/logo1.png" alt="Logo Brawl Stars" class="logo">
+        <img src="img/logo.jpg" alt="Logo Brawl Stars" class="logo">
         <a href="#profile" class="profile-button">Mi Perfil</a>
     </header>
-    <section id="profile">
-        <h2>Mi Perfil de Brawl Stars</h2>
-        
-        <!-- Formulario para ingresar el ID de Brawl Stars -->
-        <form id="profileForm">
-            <label for="brawlId">Ingresa tu ID de Brawl Stars:</label>
-            <input type="text" id="brawlId" name="brawlId" required placeholder="Ej. 123456789">
-            <button type="submit">Ver Perfil</button>
-        </form>
-    
-        <!-- Contenedor para mostrar la información del perfil -->
-        <div id="profileInfo" style="display:none;">
-            <h3>Información de tu Cuenta</h3>
-            <p id="userName"></p>
-            <p id="userLevel"></p>
-            <h4>Personajes</h4>
-            <ul id="userBrawlers"></ul>
-        </div>
-    </section>
-    
+
     <script>
         document.getElementById('profileForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevenir el envío del formulario
@@ -79,13 +64,15 @@
                 console.error(error);
             });
         });
+        <button onclick="window.location.href='pagina2.html'">Ir a otra página</button>
+
         </script>
         
     <!-- Navegación principal -->
-    <nav>
-        <button class="nav-button" onclick="scrollToSection('inicio')">Inicio</button>
-        <button class="nav-button" onclick="scrollToSection('personajes')">Personajes</button>
-    </nav>
+<nav>
+    <button class="nav-button" onclick="window.location.href='pagina2.html';">Personajes</button>
+    <button class="nav-button" onclick="scrollToSection('inicio')">Inicio</button>
+</nav>
 
     <!-- Sección de Inicio -->
     <section id="inicio">
@@ -120,185 +107,268 @@
                 object-fit: contain;
                 margin-bottom: 10px;
             }
+       
+       
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Carrusel de imágenes */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Sección de eventos y actualizaciones */
+        .eventos-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .evento {
+            width: 22%;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .evento:hover {
+            transform: translateY(-10px);
+        }
+
+        .evento h3 {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .evento p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrusel Brawl Stars</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+    
+            /* Contenedor del carrusel */
+            .carousel-container {
+                width: 100%;
+                max-width: 800px;
+                margin: 20px auto;
+                overflow: hidden;
+                position: relative;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+            }
+    
+            /* Carrusel */
+            .carousel {
+                display: flex;
+                transition: transform 1s ease-in-out;
+                width: 100%;
+            }
+    
+            /* Imágenes */
+            .carousel img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                flex-shrink: 0;
+            }
+    
+            /* Botones de navegación */
+            .carousel-buttons {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-top: 1px solid #ddd;
+            }
+    
+            .carousel-buttons button {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                padding: 10px;
+            }
+    
+            .carousel-buttons button:hover {
+                background-color: #ddd;
+            }
+    
+            /* Puntos de navegación */
+            .carousel-dots {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                padding: 10px;
+            }
+    
+            .carousel-dots button {
+                background-color: #ddd;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                height: 10px;
+                margin: 0 5px;
+                width: 10px;
+            }
+    
+            .carousel-dots button.active {
+                background-color: #666;
+            }
         </style>
     </head>
     <body>
-    
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-        <div class="character-container">
-            <!-- Personaje 1 -->
-            <div class="character-card">
-                <img src="img/Brawl_Shelly.png" alt="Shelly">
-                <h3>Shelly</h3>
-                <div class="character-info">
-                    <p>Una brawler equilibrada y fácil de usar.</p>
-                </div>
+        <!-- Carrusel de imágenes -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="img/angelesydemonios.jpg" alt="Imagen 1">
+                <img src="img/paseee.jpg" alt="Imagen 2">
+                <img src="img/Aspectos.jpg" alt="Imagen 3">
+                <img src="img/otra.jpg" alt="Imagen 4">
             </div>
-            <!-- Personaje 2 -->
-            <div class="character-card">
-                <img src="img/colt1.webp" alt="Colt">
-                <h3>Colt</h3>
-                <div class="character-info">
-                    <p>Especialista en disparos de larga distancia.</p>
-                </div>
+            <div class="carousel-buttons">
+                <button id="prev-button">&#10094;</button>
+                <button id="next-button">&#10095;</button>
             </div>
-            <!-- Personaje 3 -->
-            <div class="character-card">
-                <img src="img/nita.jpg" alt="Nita">
-                <h3>Nita</h3>
-                <div class="character-info">
-                    <p>Controladora con un poderoso oso aliado.</p>
-                </div>
+            <div class="carousel-dots">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+                <button></button>
             </div>
-            <!-- Personaje 4 -->
-            <div class="character-card">
-                <img src="img/bull.jpg" alt="Bull">
-                <h3>Bull</h3>
-                <div class="character-info">
-                    <p>Experto en combate cercano con mucha salud.</p>
-                </div>
-            </div>
-            <!-- Personaje 5 -->
-            <div class="character-card">
-                <img src="img/jessie.jpg" alt="Jessie">
-                <h3>Jessie</h3>
-                <div class="character-info">
-                    <p>Ingeniera con torreta automática.</p>
-                </div>
-            </div>
-            <!-- Personaje 6 -->
-            <div class="character-card">
-                <img src="img/brock.jpg" alt="Brock">
-                <h3>Brock</h3>
-                <div class="character-info">
-                    <p>Lanzador de misiles con alto daño a distancia.</p>
-                </div>
-            </div>
-            <!-- Personaje 7 -->
-            <div class="character-card">
-                <img src="img/dynamike.jpg" alt="Dynamike">
-                <h3>Dynamike</h3>
-                <div class="character-info">
-                    <p>Explosivos en abundancia.</p>
-                </div>
-            </div>
-            <!-- Personaje 8 -->
-            <div class="character-card">
-                <img src="img/bo.jpg" alt="Bo">
-                <h3>Bo</h3>
-                <div class="character-info">
-                    <p>Arqueros experto con minas explosivas.</p>
-                </div>
-            </div>
-            <!-- Personaje 9 -->
-            <div class="character-card">
-                <img src="img/tick.jpg" alt="Tick">
-                <h3>Tick</h3>
-                <div class="character-info">
-                    <p>Coloca minas y explota enemigos.</p>
-                </div>
-            </div>
-            <!-- Personaje 10 -->
-            <div class="character-card">
-                <img src="img/8 bit.jpg" alt="8-Bit">
-                <h3>8-Bit</h3>
-                <div class="character-info">
-                    <p>Arcade móvil con gran potencia.</p>
-                </div>
-            </div>
-            <!-- Personaje 11 -->
-            <div class="character-card">
-                <img src="img/emz.jpg" alt="Emz">
-                <h3>Emz</h3>
-                <div class="character-info">
-                    <p>Experta en redes sociales con ataque venenoso.</p>
-                </div>
-            </div>
-            <!-- Personaje 12 -->
-            <div class="character-card">
-                <img src="img/el primo.jpg" alt="El Primo">
-                <h3>El Primo</h3>
-                <div class="character-info">
-                    <p>Superestrella luchadora con gran fuerza.</p>
-                </div>
-            </div>
-            <!-- Personaje 13 -->
-            <div class="character-card">
-                <img src="img/barley.jpg" alt="Barley">
-                <h3>Barley</h3>
-                <div class="character-info">
-                    <p>Lanza botellas explosivas.</p>
-                </div>
-            </div>
-            <!-- Personaje 14 -->
-            <div class="character-card">
-                <img src="img/poco.jpg" alt="Poco">
-                <h3>Poco</h3>
-                <div class="character-info">
-                    <p>Curación musical para sus aliados.</p>
-                </div>
-            </div>
-            <!-- Personaje 15 -->
-            <div class="character-card">
-                <img src="img/rosa.jpg" alt="Rosa">
-                <h3>Rosa</h3>
-                <div class="character-info">
-                    <p>Especialista en combate cercano y resistente.</p>
-                </div>
-            </div>
-            <!-- Personaje 16 -->
-            <div class="character-card">
-                <img src="img/rico.jpg" alt="Rico">
-                <h3>Rico</h3>
-                <div class="character-info">
-                    <p>Dispara balas que rebotan.</p>
-                </div>
-            </div>
-            <!-- Personaje 17 -->
-            <div class="character-card">
-                <img src="img/darryl.jpg" alt="Darryl">
-                <h3>Darryl</h3>
-                <div class="character-info">
-                    <p>Rueda y dispara a corta distancia.</p>
-                </div>
-            </div>
-            <!-- Personaje 18 -->
-            <div class="character-card">
-                <img src="img/penny.jpg" alt="Penny">
-                <h3>Penny</h3>
-                <div class="character-info">
-                    <p>Utiliza su cañón para dañar a sus enemigos.</p>
-                </div>
-            </div>
-            <!-- Personaje 19 -->
-            <div class="character-card">
-                <img src="img/frank.jpg" alt="Frank">
-                <h3>Frank</h3>
-                <div class="character-info">
-                    <p>Usa un gran mazo para atacar a los rivales.</p>
-                </div>
-            </div>
-            <!-- Personaje 20 -->
-            <div class="character-card">
-                <img src="img/piper.jpg" alt="Piper">
-                <h3>Piper</h3>
-                <div class="character-info">
-                    <p>Sniper con gran poder a distancia.</p>
         </div>
-    </section>
+    
+        <script>
+            const carousel = document.querySelector('.carousel');
+            const images = document.querySelectorAll('.carousel img');
+            const totalImages = images.length;
+            let currentIndex = 0;
+    
+            // Función para mover el carrusel
+            function moveCarousel(index) {
+                currentIndex = index;
+                const translateXValue = -currentIndex * 100;
+                carousel.style.transform = `translateX(${translateXValue}%)`;
+                updateDots();
+            }
+    
+            // Función para actualizar los puntos de navegación
+            function updateDots() {
+                const dots = document.querySelectorAll('.carousel-dots button');
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+    
+            // Agregar eventos a los botones de navegación
+            document.getElementById('prev-button').addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveCarousel(currentIndex - 1);
+                } else {
+                    moveCarousel(totalImages - 1); // Volver al último
+                }
+            });
+    
+            document.getElementById('next-button').addEventListener('click', () => {
+                if (currentIndex < totalImages - 1) {
+                    moveCarousel(currentIndex + 1);
+                } else {
+                    moveCarousel(0); // Volver al primero
+                }
+            });
+    
+            // Agregar eventos a los puntos de navegación
+            const dots = document.querySelectorAll('.carousel-dots button');
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    moveCarousel(index);
+                });
+            });
+    
+            // Movimiento automático del carrusel cada 3 segundos
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalImages;
+                moveCarousel(currentIndex);
+            }, 3000); // Cambia cada 3 segundos (3000 ms)
+        </script>
 
-    <!-- Sección de Perfil (Simulada) -->
-    <section id="profile">
-        <h2>Mi Perfil</h2>
-        <p>Aquí puedes ver tus copas y estadísticas en Brawl Stars.</p>
-    </section>
+<head>
+    <link rel="stylesheet" href="styles.css"> <!-- Cambia 'styles.css' por el nombre de tu archivo CSS -->
+</head>
+<body>
+    <div class="eventos-container">
+        <div class="evento">
+            <h3>Evento </h3>
+            <p>And new wallpapers for your phone 🤙.</p>
+            <img src="img/evento1.jpeg" alt="img1">
+        </div>
+        <div class="evento">
+            <h3>Evento </h3>
+            <p>And new wallpapers for your phone 🤙.</p>
+            <img src="img/evento2.jpeg" alt="img2">
+        </div>
+        <div class="evento">
+            <h3>Evento </h3>
+            <p>And new wallpapers for your phone 🤙.</p>
+            <img src="img/evento3.jpeg" alt="img3">
+        </div>
+        <div class="evento">
+            <h3>Evento </h3>
+            <p>And new wallpapers for your phone 🤙.</p>
+            <img src="img/evento4.jpeg" alt="img4">
+        </div>
+    </div>
+    </body>
 
-    <script>
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
-
+    </body>
+    </html>
+    

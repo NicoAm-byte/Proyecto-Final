@@ -1,33 +1,37 @@
 function FilterGames() {
     const searchInput = document.getElementById('search-barr').value.toLowerCase();
     const gameList = document.getElementById('game-list');
+
     const allGames = [
         { name: "Honkai", url: "honkai/index.html" },
         { name: "Fnaf", url: "Fnaf/index.html" },
-        { name: "Juego 3", url: "juego3.html" },
-        { name: "Juego 4", url: "juego4.html" },
-        { name: "Juego 5", url: "juego5.html" }
-        // Puedes agregar más juegos aquí
+        { name: "..", url: "juego3.html" },
+        { name: "..", url: "juego4.html" },
+        { name: "..", url: "juego5.html" }
     ];
 
-    // Filtrar los juegos según la búsqueda
-    const filteredGames = allGames.filter(game => game.name.toLowerCase().includes(searchInput));
+    const filteredGames = allGames.filter(game =>
+        game.name.toLowerCase().includes(searchInput)
+    );
 
-    // Limpiar los resultados anteriores
-    gameList.innerHTML = '';
+    gameList.innerHTML = ''; // Limpiar los resultados previos
 
-    if (filteredGames.length > 0 && searchInput.length > 0) {
-        // Mostrar el menú desplegable
+    if (filteredGames.length > 0 && searchInput) {
         gameList.style.display = 'block';
-
-        // Agregar los resultados filtrados a la lista
         filteredGames.forEach(game => {
             const li = document.createElement('li');
             li.innerHTML = `<a href="${game.url}">${game.name}</a>`;
             gameList.appendChild(li);
         });
+    } else if (searchInput) {
+        // Si no hay resultados y el campo no está vacío
+        gameList.style.display = 'block';
+        const li = document.createElement('li');
+        li.textContent = "Contenido no encontrado";
+        li.style.color = "gray"; // Personaliza el estilo del mensaje si quieres
+        gameList.appendChild(li);
     } else {
-        // Ocultar el menú si no hay resultados o si la búsqueda está vacía
+        // Ocultar el menú si la búsqueda está vacía
         gameList.style.display = 'none';
     }
 }
