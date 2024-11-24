@@ -1,0 +1,206 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Fondo de la página */
+body {
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+    background-size: cover;
+    color: #ffffff;
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffcc00;
+}
+
+.logo {
+    height: 60px;
+}
+
+.profile-button {
+    background-color: #0055ff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.profile-button:hover {
+    background-color: #0040cc;
+    transform: scale(1.1);
+}
+
+/* Navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: #333;
+}
+
+.nav-button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #005bb5;
+    transform: translateY(-5px);
+}
+
+/* Sección de Inicio */
+#inicio {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Sección de Personajes */
+#personajes {
+    padding: 40px;
+    text-align: center;
+}
+
+.character-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.character-card {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+    transform: scale(1.05);
+}
+
+.character-card img {
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.character-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Tarjeta individual de cada personaje */
+.character-card {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+    transform: scale(1.05);
+}
+
+.character-card img {
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+
+
+/* Fuente global para toda la página */
+body {
+    font-family: 'Arial', sans-serif; /* Fuente predeterminada para la página */
+    line-height: 1.6; /* Espaciado entre líneas */
+    color: #333; /* Color de texto general */
+    background-color: #f4f4f4; /* Color de fondo general */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para los encabezados (h3) de los personajes */
+h3 {
+    font-family: 'Roboto', sans-serif; /* Fuente más moderna para los nombres de personajes */
+    font-size: 20px; /* Tamaño de fuente para los nombres */
+    color: #333; /* Color del texto */
+    margin: 10px 0; /* Márgenes para separar el nombre de la imagen */
+    font-weight: bold; /* Hacer los nombres de los personajes en negrita */
+}
+
+/* Estilo para los textos de descripción (p) */
+.character-info p {
+    font-family: 'Open Sans', sans-serif; /* Fuente más legible para las descripciones */
+    font-size: 14px; /* Tamaño de texto más pequeño para la descripción */
+    color: #555; /* Color de texto gris para la descripción */
+    line-height: 1.4; /* Espaciado entre las líneas de la descripción */
+    margin: 0; /* Eliminar márgenes adicionales */
+}
+
+/* Tipografía de las tarjetas de los personajes */
+.character-card {
+    border: 2px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+}
+
+/* Fuente para la descripción debajo de las imágenes */
+.character-card h3 {
+    font-family: 'Roboto', sans-serif; /* Fuente moderna */
+    font-size: 18px; /* Tamaño de fuente para los nombres */
+    color: #333; /* Color de texto */
+    margin-bottom: 10px;
+}
+
+/* Estilo global para los textos de los personajes dentro de las tarjetas */
+.character-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Open Sans', sans-serif; /* Fuente clara y fácil de leer */
+}
+
+/* Estilo para los enlaces (si es que los agregas más tarde) */
+a {
+    font-family: 'Arial', sans-serif;
+    color: #007bff; /* Color azul para los enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón por encima */
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Fan Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Encabezado con logo y perfil -->
+    <header>
+        <img src="img/logo1.png" alt="Logo Brawl Stars" class="logo">
+        <a href="#profile" class="profile-button">Mi Perfil</a>
+    </header>
+    <section id="profile">
+        <h2>Mi Perfil de Brawl Stars</h2>
+        
+        <!-- Formulario para ingresar el ID de Brawl Stars -->
+        <form id="profileForm">
+            <label for="brawlId">Ingresa tu ID de Brawl Stars:</label>
+            <input type="text" id="brawlId" name="brawlId" required placeholder="Ej. 123456789">
+            <button type="submit">Ver Perfil</button>
+        </form>
+    
+        <!-- Contenedor para mostrar la información del perfil -->
+        <div id="profileInfo" style="display:none;">
+            <h3>Información de tu Cuenta</h3>
+            <p id="userName"></p>
+            <p id="userLevel"></p>
+            <h4>Personajes</h4>
+            <ul id="userBrawlers"></ul>
+        </div>
+    </section>
+    
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+            
+            const brawlId = document.getElementById('brawlId').value;
+            
+            // Validar que el ID sea un número o tenga el formato esperado
+            if (!brawlId) {
+                alert('Por favor, ingresa un ID válido');
+                return;
+            }
+        
+            // Hacer la solicitud a una API para obtener los datos del perfil
+            fetch(`https://api.brawlstars.com/v1/players/${brawlId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer YOUR_API_KEY' // Necesitas obtener una API Key
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.error) {
+                    alert('No se pudo encontrar el perfil. Asegúrate de que el ID sea correcto.');
+                } else {
+                    // Mostrar la información del perfil
+                    document.getElementById('userName').textContent = `Nombre: ${data.name}`;
+                    document.getElementById('userLevel').textContent = `Nivel: ${data.expLevel}`;
+                    
+                    // Mostrar los personajes del usuario
+                    const brawlersList = document.getElementById('userBrawlers');
+                    brawlersList.innerHTML = ''; // Limpiar lista anterior
+        
+                    data.brawlers.forEach(brawler => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${brawler.name} (Nivel: ${brawler.trophies})`;
+                        brawlersList.appendChild(listItem);
+                    });
+        
+                    // Mostrar la sección con la información
+                    document.getElementById('profileInfo').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                alert('Ocurrió un error al obtener los datos.');
+                console.error(error);
+            });
+        });
+        </script>
+        
+    <!-- Navegación principal -->
+    <nav>
+        <button class="nav-button" onclick="scrollToSection('inicio')">Inicio</button>
+        <button class="nav-button" onclick="scrollToSection('personajes')">Personajes</button>
+    </nav>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio">
+        <h1>Bienvenidos a la Fan Page de Brawl Stars</h1>
+        <p>¡Explora la emocionante acción de Brawl Stars y conoce a tus personajes favoritos!</p>
+    </section>
+
+    <!-- Sección de Personajes -->
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personajes</title>
+        <style>
+            .character-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+                gap: 20px; /* Espacio entre las tarjetas */
+                padding: 20px; /* Espacio alrededor de todo el contenedor */
+            }
+            .character-card {
+                border: 2px solid #ccc;
+                padding: 10px;
+                text-align: center;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+            }
+            .character-card img {
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+        <div class="character-container">
+            <!-- Personaje 1 -->
+            <div class="character-card">
+                <img src="img/Brawl_Shelly.png" alt="Shelly">
+                <h3>Shelly</h3>
+                <div class="character-info">
+                    <p>Una brawler equilibrada y fácil de usar.</p>
+                </div>
+            </div>
+            <!-- Personaje 2 -->
+            <div class="character-card">
+                <img src="img/colt1.webp" alt="Colt">
+                <h3>Colt</h3>
+                <div class="character-info">
+                    <p>Especialista en disparos de larga distancia.</p>
+                </div>
+            </div>
+            <!-- Personaje 3 -->
+            <div class="character-card">
+                <img src="img/nita.jpg" alt="Nita">
+                <h3>Nita</h3>
+                <div class="character-info">
+                    <p>Controladora con un poderoso oso aliado.</p>
+                </div>
+            </div>
+            <!-- Personaje 4 -->
+            <div class="character-card">
+                <img src="img/bull.jpg" alt="Bull">
+                <h3>Bull</h3>
+                <div class="character-info">
+                    <p>Experto en combate cercano con mucha salud.</p>
+                </div>
+            </div>
+            <!-- Personaje 5 -->
+            <div class="character-card">
+                <img src="img/jessie.jpg" alt="Jessie">
+                <h3>Jessie</h3>
+                <div class="character-info">
+                    <p>Ingeniera con torreta automática.</p>
+                </div>
+            </div>
+            <!-- Personaje 6 -->
+            <div class="character-card">
+                <img src="img/brock.jpg" alt="Brock">
+                <h3>Brock</h3>
+                <div class="character-info">
+                    <p>Lanzador de misiles con alto daño a distancia.</p>
+                </div>
+            </div>
+            <!-- Personaje 7 -->
+            <div class="character-card">
+                <img src="img/dynamike.jpg" alt="Dynamike">
+                <h3>Dynamike</h3>
+                <div class="character-info">
+                    <p>Explosivos en abundancia.</p>
+                </div>
+            </div>
+            <!-- Personaje 8 -->
+            <div class="character-card">
+                <img src="img/bo.jpg" alt="Bo">
+                <h3>Bo</h3>
+                <div class="character-info">
+                    <p>Arqueros experto con minas explosivas.</p>
+                </div>
+            </div>
+            <!-- Personaje 9 -->
+            <div class="character-card">
+                <img src="img/tick.jpg" alt="Tick">
+                <h3>Tick</h3>
+                <div class="character-info">
+                    <p>Coloca minas y explota enemigos.</p>
+                </div>
+            </div>
+            <!-- Personaje 10 -->
+            <div class="character-card">
+                <img src="img/8 bit.jpg" alt="8-Bit">
+                <h3>8-Bit</h3>
+                <div class="character-info">
+                    <p>Arcade móvil con gran potencia.</p>
+                </div>
+            </div>
+            <!-- Personaje 11 -->
+            <div class="character-card">
+                <img src="img/emz.jpg" alt="Emz">
+                <h3>Emz</h3>
+                <div class="character-info">
+                    <p>Experta en redes sociales con ataque venenoso.</p>
+                </div>
+            </div>
+            <!-- Personaje 12 -->
+            <div class="character-card">
+                <img src="img/el primo.jpg" alt="El Primo">
+                <h3>El Primo</h3>
+                <div class="character-info">
+                    <p>Superestrella luchadora con gran fuerza.</p>
+                </div>
+            </div>
+            <!-- Personaje 13 -->
+            <div class="character-card">
+                <img src="img/barley.jpg" alt="Barley">
+                <h3>Barley</h3>
+                <div class="character-info">
+                    <p>Lanza botellas explosivas.</p>
+                </div>
+            </div>
+            <!-- Personaje 14 -->
+            <div class="character-card">
+                <img src="img/poco.jpg" alt="Poco">
+                <h3>Poco</h3>
+                <div class="character-info">
+                    <p>Curación musical para sus aliados.</p>
+                </div>
+            </div>
+            <!-- Personaje 15 -->
+            <div class="character-card">
+                <img src="img/rosa.jpg" alt="Rosa">
+                <h3>Rosa</h3>
+                <div class="character-info">
+                    <p>Especialista en combate cercano y resistente.</p>
+                </div>
+            </div>
+            <!-- Personaje 16 -->
+            <div class="character-card">
+                <img src="img/rico.jpg" alt="Rico">
+                <h3>Rico</h3>
+                <div class="character-info">
+                    <p>Dispara balas que rebotan.</p>
+                </div>
+            </div>
+            <!-- Personaje 17 -->
+            <div class="character-card">
+                <img src="img/darryl.jpg" alt="Darryl">
+                <h3>Darryl</h3>
+                <div class="character-info">
+                    <p>Rueda y dispara a corta distancia.</p>
+                </div>
+            </div>
+            <!-- Personaje 18 -->
+            <div class="character-card">
+                <img src="img/penny.jpg" alt="Penny">
+                <h3>Penny</h3>
+                <div class="character-info">
+                    <p>Utiliza su cañón para dañar a sus enemigos.</p>
+                </div>
+            </div>
+            <!-- Personaje 19 -->
+            <div class="character-card">
+                <img src="img/frank.jpg" alt="Frank">
+                <h3>Frank</h3>
+                <div class="character-info">
+                    <p>Usa un gran mazo para atacar a los rivales.</p>
+                </div>
+            </div>
+            <!-- Personaje 20 -->
+            <div class="character-card">
+                <img src="img/piper.jpg" alt="Piper">
+                <h3>Piper</h3>
+                <div class="character-info">
+                    <p>Sniper con gran poder a distancia.</p>
+        </div>
+    </section>
+
+    <!-- Sección de Perfil (Simulada) -->
+    <section id="profile">
+        <h2>Mi Perfil</h2>
+        <p>Aquí puedes ver tus copas y estadísticas en Brawl Stars.</p>
+    </section>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
